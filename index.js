@@ -8,9 +8,9 @@ var ready = false
 
 inherits(YouTubePlayer, EventEmitter)
 
-  if (!window['YT'])
-    window.YT = {};
- 
+if (!window['YT'])
+  window.YT = {}
+
 /*
 { id // element id
 , width
@@ -79,7 +79,7 @@ function YouTubePlayer (options) {
       self.emit('ready')
       if(self.waiting)
         self.play.apply(self, self.waiting)
-    }  
+    }
   }
 
   function create() {
@@ -91,7 +91,7 @@ function YouTubePlayer (options) {
 }
 
 function map(a, b) {
-  YouTubePlayer.prototype[a] = 
+  YouTubePlayer.prototype[a] =
   'function' == typeof b ? b : function () {
     var args = [].slice.call(arguments)
     if('function' === typeof this.player[b])
