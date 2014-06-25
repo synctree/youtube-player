@@ -122,26 +122,18 @@ map('setVolume')
 map('getVolume')
 
 //global listener... sorry. this is youtube.
-window.onYouTubePlayerAPIReady = function () {
+window.onYouTubeIframeAPIReady = function () {
   ready = true
   while(waiting.length)
     waiting.shift()()
-} 
+}
 
-//this is from http://www.youtube.com/player_api
-//gonna inline it here to save a request.
+// load up the player api
 setTimeout(function () {
- if (!YT.Player) {
-    (function () {
-      var p = document.location.protocol == 'https:' ? 'https:' : 'http:'
-      var s = p + '//s.ytimg.com/yt/jsbin/www-widgetapi-vflCAfh6H.js'
-      var a = document.createElement('script')
-      a.src = s
-      a.async = true
-      document.head.insertBefore(a, document.head.firstElementChild)
-      YT.embed_template = 
-        "\u003ciframe width=\"425\" height=\"344\" src=\"\"" + 
-        "frameborder=\"0\" allowfullscreen\u003e\u003c\/iframe\u003e"
-    })()
+  if (!YT.Player) {
+    var script = document.createElement('script')
+    script.src = '//www.youtube.com/iframe_api'
+    script.async = true
+    document.head.insertBefore(script, document.head.firstElementChild)
   }
 }, 1)
