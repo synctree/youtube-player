@@ -88,6 +88,8 @@ function YouTubePlayer (options) {
 
   if(!ready)
     waiting.push(create)
+  else
+    create();
 }
 
 function map(a, b) {
